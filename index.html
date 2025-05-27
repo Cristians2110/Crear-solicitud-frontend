@@ -1,154 +1,174 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solicitud de Servicio Médico</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7;
-        margin: 0;
-        padding: 20px;
-      }
-      .container {
-        max-width: 600px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      h2 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-      }
-      input,
-      select,
-      textarea,
-      button {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-      button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-      button:hover {
-        background-color: #0056b3;
-      }
-      #result {
-        text-align: center;
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Formulario de Solicitud de Servicio Médico</h2>
-      <form id="serviceRequestForm">
-        <label for="document_type">Tipo de Documento:</label>
-        <select id="document_type" name="document_type" required>
-          <option value="">--Selecciona--</option>
-          <option value="CC">Cédula</option>
-          <option value="TI">Tarjeta de Identidad</option>
-          <option value="CE">Cédula de Extranjería</option>
-          <option value="PP">Pasaporte</option>
-        </select>
+<head>
+  <meta charset="UTF-8">
+  <title>Crear Service Request</title>
+</head>
+<body>
+  <h2>Formulario de Solicitud de Servicio (RIS)</h2>
 
-        <label for="patient_id">Número de Documento del Paciente:</label>
-        <input type="text" id="patient_id" name="patient_id" required />
+  <form id="serviceRequestForm">
+    <!-- Tipo de Documento -->
+    <label for="document_type">Tipo de Documento:</label><br>
+    <select id="document_type" name="document_type" required>
+      <option value="">--Selecciona--</option>
+      <option value="CC">Cédula</option>
+      <option value="TI">Tarjeta de Identidad</option>
+      <option value="CE">Cédula de Extranjería</option>
+      <option value="PP">Pasaporte</option>
+    </select><br><br>
 
-        <label for="service_type">Tipo de Examen (Código CUPS):</label>
-        <select id="service_type" name="service_type" required>
-          <option value="">--Selecciona--</option>
-          <option value="87.38.01">87.38.01 - Radiografía de tórax PA y lateral</option>
-          <option value="87.44.02">87.44.02 - Ecografía abdominal total</option>
-          <option value="88.38.01">88.38.01 - TAC de tórax simple</option>
-          <option value="88.01.03">88.01.03 - Resonancia magnética de cráneo simple</option>
-        </select>
+    <!-- Número de Documento -->
+    <label for="patient_id">Número de Documento del Paciente:</label><br>
+    <input type="text" id="patient_id" name="patient_id" required><br><br>
 
-        <label for="description">Descripción del examen:</label>
-        <textarea id="description" name="description" required></textarea>
+    <!-- Tipo de Examen (CUPS) -->
+    <label for="service_type">Tipo de Examen (Código CUPS):</label><br>
+    <select id="service_type" name="service_type" required>
+      <option value="">--Selecciona--</option>
+      <!-- Radiografías -->
+      <option value="87.38.01">87.38.01 - Radiografía de tórax posteroanterior y lateral</option>
+      <option value="87.03.01">87.03.01 - Radiografía de cráneo</option>
+      <option value="87.06.01">87.06.01 - Radiografía de columna cervical</option>
+      <option value="87.06.02">87.06.02 - Radiografía de columna dorsolumbar</option>
+      <option value="87.08.01">87.08.01 - Radiografía de pelvis</option>
+      <option value="87.10.01">87.10.01 - Radiografía de abdomen simple</option>
+      <option value="87.28.01">87.28.01 - Radiografía de extremidades superiores</option>
+      <option value="87.30.01">87.30.01 - Radiografía de extremidades inferiores</option>
+      <!-- Ecografías -->
+      <option value="87.44.02">87.44.02 - Ecografía abdominal total</option>
+      <option value="87.44.03">87.44.03 - Ecografía pélvica transabdominal</option>
+      <option value="87.44.04">87.44.04 - Ecografía obstétrica temprana</option>
+      <option value="87.44.05">87.44.05 - Ecografía renal y vías urinarias</option>
+       <option value="87.38.01">87.38.01 - Radiografía de tórax posteroanterior y lateral</option>
+      <option value="87.03.01">87.03.01 - Radiografía de cráneo</option>
+      <option value="87.06.01">87.06.01 - Radiografía de columna cervical</option>
+      <option value="87.06.02">87.06.02 - Radiografía de columna dorsolumbar</option>
+      <option value="87.08.01">87.08.01 - Radiografía de pelvis</option>
+      <option value="87.10.01">87.10.01 - Radiografía de abdomen simple</option>
+      <option value="87.28.01">87.28.01 - Radiografía de extremidades superiores</option>
+      <option value="87.30.01">87.30.01 - Radiografía de extremidades inferiores</option>
+      <!-- Ecografías -->
+      <option value="87.44.02">87.44.02 - Ecografía abdominal total</option>
+      <option value="87.44.03">87.44.03 - Ecografía pélvica transabdominal</option>
+      <option value="87.44.04">87.44.04 - Ecografía obstétrica temprana</option>
+      <option value="87.44.05">87.44.05 - Ecografía renal y vías urinarias</option>
+      <option value="87.44.06">87.44.06 - Ecografía de partes blandas</option>
+      <option value="87.44.07">87.44.07 - Ecografía testicular</option>
+      <option value="87.44.08">87.44.08 - Ecografía tiroidea</option>
+      <!-- TAC -->
+      <option value="88.38.01">88.38.01 - TAC de tórax simple</option>
+      <option value="88.38.02">88.38.02 - TAC de cráneo</option>
+      <option value="88.38.03">88.38.03 - TAC de abdomen simple</option>
+      <option value="88.38.04">88.38.04 - TAC abdomen y pelvis con contraste</option>
+      <option value="88.38.06">88.38.06 - TAC de columna lumbar</option>
+      <option value="88.38.08">88.38.08 - TAC de senos paranasales</option>
+      <!-- Resonancias -->
+      <option value="88.01.03">88.01.03 - Resonancia magnética de cráneo simple</option>
+      <option value="88.01.04">88.01.04 - Resonancia magnética de columna lumbar</option>
+      <option value="88.01.05">88.01.05 - Resonancia magnética de rodilla</option>
+      <option value="88.01.06">88.01.06 - Resonancia magnética de abdomen superior</option>
+    </select><br><br>
 
-        <label for="requester">ID del Profesional (numérico):</label>
-        <input type="number" id="requester" name="requester" required min="1" />
+    </select><br><br>
 
-        <label for="priority">Prioridad:</label>
-        <select id="priority" name="priority" required>
-          <option value="">--Selecciona--</option>
-          <option value="alta">Alta</option>
-          <option value="media">Media</option>
-          <option value="baja">Baja</option>
-        </select>
+    <!-- Descripción (autocompletada) -->
+    <label for="description">Descripción del examen:</label><br>
+    <textarea id="description" name="description" required></textarea><br><br>
 
-        <button type="submit">Enviar Solicitud</button>
-      </form>
-      <p id="result"></p>
-    </div>
+    <!-- Solicitante -->
+    <label for="requester">Solicitante (ID numérico del profesional):</label><br>
+    <input type="number" id="requester" name="requester" required min="1"><br><br>
 
-    <script>
-      const BASE_URL = "https://hl7-fhir-ehr-cristian.onrender.com";
+    <!-- Prioridad -->
+    <label for="priority">Prioridad:</label><br>
+    <select id="priority" name="priority" required>
+      <option value="">--Selecciona--</option>
+      <option value="alta">Alta</option>
+      <option value="media">Media</option>
+      <option value="baja">Baja</option>
+    </select><br><br>
 
-      const cupsDescriptions = {
-        "87.38.01": "Radiografía de tórax posteroanterior y lateral",
-        "87.44.02": "Ecografía abdominal total",
-        "88.38.01": "TAC de tórax simple",
-        "88.01.03": "Resonancia magnética de cráneo simple"
+    <button type="submit">Enviar Solicitud</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script>
+    const BASE_URL = "https://hl7-fhir-ehr-cristian.onrender.com";
+
+    const cupsDescriptions = {
+      "87.38.01": "Radiografía de tórax posteroanterior y lateral",
+      "87.03.01": "Radiografía de cráneo",
+      "87.06.01": "Radiografía de columna cervical",
+      "87.06.02": "Radiografía de columna dorsolumbar",
+      "87.08.01": "Radiografía de pelvis",
+      "87.10.01": "Radiografía de abdomen simple",
+      "87.28.01": "Radiografía de extremidades superiores",
+      "87.30.01": "Radiografía de extremidades inferiores",
+      "87.44.02": "Ecografía abdominal total",
+      "87.44.03": "Ecografía pélvica transabdominal",
+      "87.44.04": "Ecografía obstétrica temprana",
+      "87.44.05": "Ecografía renal y vías urinarias",
+      "87.44.06": "Ecografía de partes blandas",
+      "87.44.07": "Ecografía testicular",
+      "87.44.08": "Ecografía tiroidea",
+      "88.38.01": "TAC de tórax simple",
+      "88.38.02": "TAC de cráneo",
+      "88.38.03": "TAC de abdomen simple",
+      "88.38.04": "TAC abdomen y pelvis con contraste",
+      "88.38.06": "TAC de columna lumbar",
+      "88.38.08": "TAC de senos paranasales",
+      "88.01.03": "Resonancia magnética de cráneo simple",
+      "88.01.04": "Resonancia magnética de columna lumbar",
+      "88.01.05": "Resonancia magnética de rodilla",
+      "88.01.06": "Resonancia magnética de abdomen superior"
+    };
+
+    // Autocompletar descripción
+    document.getElementById("service_type").addEventListener("change", function () {
+      const code = this.value;
+      document.getElementById("description").value = cupsDescriptions[code] || "";
+    });
+
+    // Enviar formulario
+    document.getElementById("serviceRequestForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const requesterId = document.getElementById("requester").value;
+      if (!requesterId || isNaN(requesterId) || requesterId <= 0) {
+        document.getElementById("result").innerText = "❌ El ID del profesional debe ser un número válido.";
+        return;
+      }
+
+      const data = {
+        patient_id: document.getElementById("patient_id").value,
+        document_type: document.getElementById("document_type").value,
+        service_type: document.getElementById("service_type").value,
+        description: document.getElementById("description").value,
+        requester: `Practitioner/${requesterId}`,
+        priority: document.getElementById("priority").value
       };
 
-      document.getElementById("service_type").addEventListener("change", function () {
-        const code = this.value;
-        document.getElementById("description").value = cupsDescriptions[code] || "";
-      });
+      try {
+        const response = await fetch(`${BASE_URL}/service_request`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
 
-      document.getElementById("serviceRequestForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const requesterId = document.getElementById("requester").value;
-        if (!requesterId || isNaN(requesterId) || requesterId <= 0) {
-          document.getElementById("result").innerText = "❌ El ID del profesional debe ser un número válido.";
-          return;
-        }
-
-        const data = {
-          patient_id: document.getElementById("patient_id").value,
-          document_type: document.getElementById("document_type").value,
-          service_type: document.getElementById("service_type").value,
-          description: document.getElementById("description").value,
-          requester: `Practitioner/${requesterId}`,
-          priority: document.getElementById("priority").value
-        };
-
-        try {
-          const response = await fetch(`${BASE_URL}/service_request`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
-
-          const result = await response.json();
-          document.getElementById("result").innerText =
-            response.ok
-              ? `✅ Solicitud creada con ID: ${result.id}`
-              : `❌ Error: ${result.detail || 'Error desconocido'}`;
-        } catch (error) {
-          document.getElementById("result").innerText = `❌ Error al conectar con el servidor`;
-          console.error(error);
-        }
-      });
-    </script>
-  </body>
-</html>
+        const result = await response.json();
+        document.getElementById("result").innerText =
+          response.ok
+            ? `✅ Solicitud creada con ID: ${result.id}`
+            : `❌ Error: ${result.detail || 'Error desconocido'}`;
+      } catch (error) {
+        document.getElementById("result").innerText = `❌ Error al conectar con el servidor`;
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html
