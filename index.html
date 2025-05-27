@@ -1,98 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Crear Service Request</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f9f9f9;
-      padding: 20px;
-    }
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-    form {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 20px 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    label {
-      font-weight: 600;
-      display: block;
-      margin-top: 15px;
-      color: #555;
-    }
-    select, input[type="text"], textarea {
-      width: 100%;
-      padding: 8px 10px;
-      margin-top: 6px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      box-sizing: border-box;
-      transition: border-color 0.3s;
-    }
-    select:focus, input[type="text"]:focus, textarea:focus {
-      border-color: #4caf50;
-      outline: none;
-    }
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    button {
-      margin-top: 25px;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      padding: 12px;
-      width: 100%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      border-radius: 6px;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    #result {
-      max-width: 600px;
-      margin: 20px auto 0;
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-  </style>
 </head>
 <body>
-
   <h2>Formulario de Solicitud de Servicio (RIS)</h2>
 
-  <form id="serviceRequestForm" novalidate>
+  <form id="serviceRequestForm">
     <!-- Tipo de Documento -->
-    <label for="document_type">Tipo de Documento:</label>
+    <label for="document_type">Tipo de Documento:</label><br>
     <select id="document_type" name="document_type" required>
-      <option value="" disabled selected>--Selecciona--</option>
+      <option value="">--Selecciona--</option>
       <option value="CC">Cédula</option>
       <option value="TI">Tarjeta de Identidad</option>
       <option value="CE">Cédula de Extranjería</option>
       <option value="PP">Pasaporte</option>
-    </select>
+    </select><br><br>
 
     <!-- Número de Documento -->
-    <label for="patient_id">Número de Documento del Paciente:</label>
-    <input type="text" id="patient_id" name="patient_id" required pattern="\d{5,20}" title="Ingrese un número válido entre 5 y 20 dígitos" />
+    <label for="patient_id">Número de Documento del Paciente:</label><br>
+    <input type="text" id="patient_id" name="patient_id" required><br><br>
 
     <!-- Tipo de Examen (CUPS) -->
-    <label for="service_type">Tipo de Examen (Código CUPS):</label>
+    <label for="service_type">Tipo de Examen (Código CUPS):</label><br>
     <select id="service_type" name="service_type" required>
-      <option value="" disabled selected>--Selecciona--</option>
+      <option value="">--Selecciona--</option>
+      <!-- Radiografías -->
       <option value="87.38.01">87.38.01 - Radiografía de tórax posteroanterior y lateral</option>
       <option value="87.03.01">87.03.01 - Radiografía de cráneo</option>
       <option value="87.06.01">87.06.01 - Radiografía de columna cervical</option>
@@ -101,6 +35,7 @@
       <option value="87.10.01">87.10.01 - Radiografía de abdomen simple</option>
       <option value="87.28.01">87.28.01 - Radiografía de extremidades superiores</option>
       <option value="87.30.01">87.30.01 - Radiografía de extremidades inferiores</option>
+      <!-- Ecografías -->
       <option value="87.44.02">87.44.02 - Ecografía abdominal total</option>
       <option value="87.44.03">87.44.03 - Ecografía pélvica transabdominal</option>
       <option value="87.44.04">87.44.04 - Ecografía obstétrica temprana</option>
@@ -108,34 +43,36 @@
       <option value="87.44.06">87.44.06 - Ecografía de partes blandas</option>
       <option value="87.44.07">87.44.07 - Ecografía testicular</option>
       <option value="87.44.08">87.44.08 - Ecografía tiroidea</option>
+      <!-- TAC -->
       <option value="88.38.01">88.38.01 - TAC de tórax simple</option>
       <option value="88.38.02">88.38.02 - TAC de cráneo</option>
       <option value="88.38.03">88.38.03 - TAC de abdomen simple</option>
       <option value="88.38.04">88.38.04 - TAC abdomen y pelvis con contraste</option>
       <option value="88.38.06">88.38.06 - TAC de columna lumbar</option>
       <option value="88.38.08">88.38.08 - TAC de senos paranasales</option>
+      <!-- Resonancias -->
       <option value="88.01.03">88.01.03 - Resonancia magnética de cráneo simple</option>
       <option value="88.01.04">88.01.04 - Resonancia magnética de columna lumbar</option>
       <option value="88.01.05">88.01.05 - Resonancia magnética de rodilla</option>
       <option value="88.01.06">88.01.06 - Resonancia magnética de abdomen superior</option>
-    </select>
+    </select><br><br>
 
     <!-- Descripción (autocompletada) -->
-    <label for="description">Descripción del examen:</label>
-    <textarea id="description" name="description" required readonly></textarea>
+    <label for="description">Descripción del examen:</label><br>
+    <textarea id="description" name="description" required></textarea><br><br>
 
     <!-- Solicitante -->
-    <label for="requester">Solicitante (ID del profesional):</label>
-    <input type="text" id="requester" name="requester" required pattern="\d+" title="Ingrese un ID válido" />
+    <label for="requester">Solicitante (ID numérico del profesional):</label><br>
+    <input type="number" id="requester" name="requester" required min="1"><br><br>
 
     <!-- Prioridad -->
-    <label for="priority">Prioridad:</label>
+    <label for="priority">Prioridad:</label><br>
     <select id="priority" name="priority" required>
-      <option value="" disabled selected>--Selecciona--</option>
+      <option value="">--Selecciona--</option>
       <option value="alta">Alta</option>
       <option value="media">Media</option>
       <option value="baja">Baja</option>
-    </select>
+    </select><br><br>
 
     <button type="submit">Enviar Solicitud</button>
   </form>
@@ -145,7 +82,6 @@
   <script>
     const BASE_URL = "https://hl7-fhir-ehr-cristian.onrender.com";
 
-    // Mapa de descripciones CUPS para autocompletar descripción
     const cupsDescriptions = {
       "87.38.01": "Radiografía de tórax posteroanterior y lateral",
       "87.03.01": "Radiografía de cráneo",
@@ -174,30 +110,28 @@
       "88.01.06": "Resonancia magnética de abdomen superior"
     };
 
-    // Al cambiar tipo de examen, autocompleta la descripción
+    // Autocompletar descripción
     document.getElementById("service_type").addEventListener("change", function () {
       const code = this.value;
-      const descriptionField = document.getElementById("description");
-      descriptionField.value = cupsDescriptions[code] || "";
+      document.getElementById("description").value = cupsDescriptions[code] || "";
     });
 
-    // Manejo del envío del formulario
+    // Enviar formulario
     document.getElementById("serviceRequestForm").addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      // Validar formulario antes de enviar
-      const form = e.target;
-      if (!form.checkValidity()) {
-        form.reportValidity();
+      const requesterId = document.getElementById("requester").value;
+      if (!requesterId || isNaN(requesterId) || requesterId <= 0) {
+        document.getElementById("result").innerText = "❌ El ID del profesional debe ser un número válido.";
         return;
       }
 
       const data = {
-        patient_id: document.getElementById("patient_id").value.trim(),
+        patient_id: document.getElementById("patient_id").value,
         document_type: document.getElementById("document_type").value,
         service_type: document.getElementById("service_type").value,
-        description: document.getElementById("description").value.trim(),
-        requester: document.getElementById("requester").value.trim(),
+        description: document.getElementById("description").value,
+        requester: `Practitioner/${requesterId}`,
         priority: document.getElementById("priority").value
       };
 
@@ -211,16 +145,15 @@
         });
 
         const result = await response.json();
-
-        document.getElementById("result").innerText = response.ok
-          ? `✅ Solicitud creada con ID: ${result.id}`
-          : `❌ Error: ${result.detail || 'Error desconocido'}`;
+        document.getElementById("result").innerText =
+          response.ok
+            ? `✅ Solicitud creada con ID: ${result.id}`
+            : `❌ Error: ${result.detail || 'Error desconocido'}`;
       } catch (error) {
-        document.getElementById("result").innerText = "❌ Error al conectar con el servidor.";
+        document.getElementById("result").innerText = `❌ Error al conectar con el servidor`;
         console.error(error);
       }
     });
   </script>
-
 </body>
 </html>
